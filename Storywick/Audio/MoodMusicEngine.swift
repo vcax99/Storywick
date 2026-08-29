@@ -19,7 +19,7 @@ final class MoodMusicEngine: NSObject, AVAudioPlayerDelegate {
     private var ducked = true          // true = should be silent (paused / stopped)
 
     private(set) var currentMood: Mood = .none
-    private let prepQueue = DispatchQueue(label: "com.bikash.StoryTeller.mood-prep", qos: .userInitiated)
+    private let prepQueue = DispatchQueue(label: "com.bikash.Storywick.mood-prep", qos: .userInitiated)
 
     override init() {
         super.init()

@@ -13,13 +13,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5701000000000000000000A1 /* StoryTeller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoryTeller.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5701000000000000000000A1 /* Storywick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Storywick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5701000000000000000000D0 /* KokoroModel */ = {isa = PBXFileReference; lastKnownFileType = folder; path = KokoroModel; sourceTree = "<group>"; };
 		5701000000000000000000D2 /* MoodMusic */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MoodMusic; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		5701000000000000000000B0 /* StoryTeller */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = StoryTeller; sourceTree = "<group>"; };
+		5701000000000000000000B0 /* Storywick */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Storywick; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +37,7 @@
 		5701000000000000000000A3 = {
 			isa = PBXGroup;
 			children = (
-				5701000000000000000000B0 /* StoryTeller */,
+				5701000000000000000000B0 /* Storywick */,
 				5701000000000000000000D0 /* KokoroModel */,
 				5701000000000000000000D2 /* MoodMusic */,
 				5701000000000000000000A4 /* Products */,
@@ -47,7 +47,7 @@
 		5701000000000000000000A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5701000000000000000000A1 /* StoryTeller.app */,
+				5701000000000000000000A1 /* Storywick.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,9 +55,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5701000000000000000000A5 /* StoryTeller */ = {
+		5701000000000000000000A5 /* Storywick */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5701000000000000000000A6 /* Build configuration list for PBXNativeTarget "StoryTeller" */;
+			buildConfigurationList = 5701000000000000000000A6 /* Build configuration list for PBXNativeTarget "Storywick" */;
 			buildPhases = (
 				5701000000000000000000A7 /* Sources */,
 				5701000000000000000000A2 /* Frameworks */,
@@ -68,14 +68,14 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				5701000000000000000000B0 /* StoryTeller */,
+				5701000000000000000000B0 /* Storywick */,
 			);
-			name = StoryTeller;
+			name = Storywick;
 			packageProductDependencies = (
 				5701000000000000000000C1 /* sherpa-onnx */,
 			);
-			productName = StoryTeller;
-			productReference = 5701000000000000000000A1 /* StoryTeller.app */;
+			productName = Storywick;
+			productReference = 5701000000000000000000A1 /* Storywick.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -93,7 +93,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5701000000000000000000AA /* Build configuration list for PBXProject "StoryTeller" */;
+			buildConfigurationList = 5701000000000000000000AA /* Build configuration list for PBXProject "Storywick" */;
 			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,7 +110,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5701000000000000000000A5 /* StoryTeller */,
+				5701000000000000000000A5 /* Storywick */,
 			);
 		};
 /* End PBXProject section */
@@ -274,7 +274,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bikash.StoryTeller;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bikash.Storywick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -297,7 +297,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.bikash.StoryTeller;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bikash.Storywick;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -308,7 +308,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5701000000000000000000A6 /* Build configuration list for PBXNativeTarget "StoryTeller" */ = {
+		5701000000000000000000A6 /* Build configuration list for PBXNativeTarget "Storywick" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5701000000000000000000AD /* Debug */,
@@ -317,7 +317,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5701000000000000000000AA /* Build configuration list for PBXProject "StoryTeller" */ = {
+		5701000000000000000000AA /* Build configuration list for PBXProject "Storywick" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5701000000000000000000AB /* Debug */,

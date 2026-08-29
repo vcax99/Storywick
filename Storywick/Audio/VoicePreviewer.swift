@@ -12,7 +12,7 @@ final class VoicePreviewer {
     private let engine = AVAudioEngine()
     private let node = AVAudioPlayerNode()
     private let format = AVAudioFormat(standardFormatWithSampleRate: 24_000, channels: 1)!
-    private let queue = DispatchQueue(label: "com.bikash.StoryTeller.voice-preview", qos: .userInitiated)
+    private let queue = DispatchQueue(label: "com.bikash.Storywick.voice-preview", qos: .userInitiated)
     private var generation = 0
 
     private(set) var isBusy = false

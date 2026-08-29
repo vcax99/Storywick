@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5701000000000000000000A5"
-               BuildableName = "StoryTeller.app"
-               BlueprintName = "StoryTeller"
-               ReferencedContainer = "container:StoryTeller.xcodeproj">
+               BuildableName = "Storywick.app"
+               BlueprintName = "Storywick"
+               ReferencedContainer = "container:Storywick.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5701000000000000000000A5"
-            BuildableName = "StoryTeller.app"
-            BlueprintName = "StoryTeller"
-            ReferencedContainer = "container:StoryTeller.xcodeproj">
+            BuildableName = "Storywick.app"
+            BlueprintName = "Storywick"
+            ReferencedContainer = "container:Storywick.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5701000000000000000000A5"
-            BuildableName = "StoryTeller.app"
-            BlueprintName = "StoryTeller"
-            ReferencedContainer = "container:StoryTeller.xcodeproj">
+            BuildableName = "Storywick.app"
+            BlueprintName = "Storywick"
+            ReferencedContainer = "container:Storywick.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

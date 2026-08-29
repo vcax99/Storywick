@@ -12,7 +12,7 @@ final class KokoroTTS {
         let sampleRate: Double
     }
 
-    static let log = Logger(subsystem: "com.bikash.StoryTeller", category: "Kokoro")
+    static let log = Logger(subsystem: "com.bikash.Storywick", category: "Kokoro")
 
     /// One shared model instance — loaded on first access (~0.4 s), off the main
     /// thread if that's where it's first touched. Nil if the files are missing.

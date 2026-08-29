@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct StoryTellerApp: App {
+struct StorywickApp: App {
     @State private var narrator = Narrator()
     private let container: ModelContainer
 

@@ -4,7 +4,7 @@
 
 A private iOS app that reads pasted novel chapters aloud with a natural voice and
 low mood music. Personal use only — not for the App Store. (The Xcode project and
-target are still named `StoryTeller`; the bundle id is `com.bikash.StoryTeller`;
+target are still named `Storywick`; the bundle id is `com.bikash.Storywick`;
 the user-facing name is Storywick.)
 
 Runs **fully offline**: on-device speech, local storage, bundled font, no network
@@ -23,7 +23,7 @@ seeking, and highlighting. Player bar, active-sentence highlight, auto-scroll.
 
 **Phase 2.5 — revisions.** Done, verified on the simulator:
 
-- **One paste-first screen.** [HomeView](StoryTeller/Views/HomeView.swift): inline
+- **One paste-first screen.** [HomeView](Storywick/Views/HomeView.swift): inline
   editor + word counter + a glowing "Listen" button, Recent list below.
 - **History capped at `AppConfig.historyLimit` (10).** Oldest drops off.
 - **Resume.** `Story.progressIndex` is saved while listening; opening a recent
@@ -44,11 +44,11 @@ seeking, and highlighting. Player bar, active-sentence highlight, auto-scroll.
   ONNX Runtime on CPU, so it runs on the simulator as well as devices.
 - `kokoro-int8-en-v0_19` model (~129 MB) bundled as the `KokoroModel/` folder
   reference — 11 named voices, fully offline from first launch.
-- [KokoroTTS](StoryTeller/Audio/KokoroTTS.swift) — model load + blocking synth.
-- [KokoroPlayer](StoryTeller/Audio/KokoroPlayer.swift) — synthesises each sentence
+- [KokoroTTS](Storywick/Audio/KokoroTTS.swift) — model load + blocking synth.
+- [KokoroPlayer](Storywick/Audio/KokoroPlayer.swift) — synthesises each sentence
   a couple ahead of playback on a background queue, streams through `AVAudioEngine`.
   Same highlight / scrub / resume as the Apple path.
-- [Narrator](StoryTeller/Audio/Narrator.swift) is now dual-engine: **Natural**
+- [Narrator](Storywick/Audio/Narrator.swift) is now dual-engine: **Natural**
   (Kokoro, default) and **System** (Apple, fallback). Settings sheet has an engine
   picker; Kokoro shows its 11 voice cards, Pitch is hidden (Kokoro has no pitch).
 - First sentence shows a "Generating the voice…" spinner (~1 s on device, ~2 s on
@@ -60,18 +60,18 @@ seeking, and highlighting. Player bar, active-sentence highlight, auto-scroll.
 - **Real music beds** — 14 Kevin MacLeod tracks (CC-BY 4.0, incompetech.com), from
   archive.org, transcoded to 48 kbps mono AAC (~16 MB total), in `MoodMusic/`.
   Rebuild with `scripts/fetch-music.sh`.
-- [MoodMusicEngine](StoryTeller/Audio/MoodMusicEngine.swift) — `AVAudioPlayer` on a
+- [MoodMusicEngine](Storywick/Audio/MoodMusicEngine.swift) — `AVAudioPlayer` on a
   gapless loop, hard volume ceiling (0.22) so it's always under the voice, fades
   in/out for pause and stop. A "Background level" slider trims within the ceiling.
-- [Mood](StoryTeller/Audio/Mood.swift) — all 25 mood names selectable + None,
+- [Mood](Storywick/Audio/Mood.swift) — all 25 mood names selectable + None,
   mapped onto the 14 beds (several names share one, e.g. Thriller/Action;
   Fantasy and Meditative use the Indian-flavoured Vadodara tracks).
 - Per-chapter: `Story.mood` is saved. Picked from the music-note button in the
-  reader ([MoodPickerView](StoryTeller/Views/MoodPickerView.swift)).
+  reader ([MoodPickerView](Storywick/Views/MoodPickerView.swift)).
 
 **Audio reliability (Phase 4c):**
 
-- [AudioHub](StoryTeller/Audio/AudioHub.swift) — one owner of the `AVAudioSession`.
+- [AudioHub](Storywick/Audio/AudioHub.swift) — one owner of the `AVAudioSession`.
   Configures it once, never deactivates it, and re-asserts playback after an
   interruption (call, timer) or when the app returns to the foreground. This is
   what stops the music bed from silently dropping out.
@@ -93,7 +93,7 @@ seeking, and highlighting. Player bar, active-sentence highlight, auto-scroll.
 
 - `UIBackgroundModes = audio` (real `Info.plist` now — `GENERATE_INFOPLIST_FILE`
   is off), `AVAudioSession` `.playback`.
-- [NowPlaying](StoryTeller/Audio/NowPlaying.swift) — `MPNowPlayingInfoCenter`
+- [NowPlaying](Storywick/Audio/NowPlaying.swift) — `MPNowPlayingInfoCenter`
   (chapter title, sentence position) + `MPRemoteCommandCenter` (play/pause,
   next/previous → skip a sentence). Works from the lock screen, Control Center,
   and headphone controls.
@@ -107,7 +107,7 @@ appearance toggle is **two states only** — a sun and a moon, no System option.
 
 **Phase 5 — player screen + branding.** Done, verified on the simulator:
 
-- **Now-Playing-style reader.** [ReaderView](StoryTeller/Views/ReaderView.swift)
+- **Now-Playing-style reader.** [ReaderView](Storywick/Views/ReaderView.swift)
   is an Apple-Music-style player: chapter title up top, a card showing the chapter
   text with the current sentence spotlit (rest dimmed, lyrics-style) and a lime
   rail on the active paragraph, then the now-playing line, a scrubber, a big
@@ -144,8 +144,8 @@ appearance toggle is **two states only** — a sun and a moon, no System option.
 ## Project layout
 
 ```
-StoryTeller/
-  StoryTellerApp.swift                app entry, font registration
+Storywick/
+  StorywickApp.swift                app entry, font registration
   Views/RootView.swift               splash -> home; owns the window colour scheme
   Views/SplashView.swift             branded splash
   Support/StorywickMark.swift        logo mark
@@ -192,10 +192,10 @@ human voice is offline from first launch.
 
 ## Build & run
 
-Open `StoryTeller.xcodeproj` in Xcode, pick an iPhone simulator, ⌘R. Terminal:
+Open `Storywick.xcodeproj` in Xcode, pick an iPhone simulator, ⌘R. Terminal:
 
 ```sh
-xcodebuild -project StoryTeller.xcodeproj -scheme StoryTeller \
+xcodebuild -project Storywick.xcodeproj -scheme Storywick \
   -destination 'platform=iOS Simulator,name=iPhone 16' build
 ```
 
