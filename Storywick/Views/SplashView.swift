@@ -10,6 +10,13 @@ struct SplashView: View {
     private let inkSoft = Color(red: 0.580, green: 0.639, blue: 0.722)  // #94A3B8
     private let inkFaint = Color(red: 0.431, green: 0.475, blue: 0.522) // #6E7985
 
+    private var appVersion: String {
+        let info = Bundle.main.infoDictionary
+        let short = info?["CFBundleShortVersionString"] as? String ?? "1.0"
+        let build = info?["CFBundleVersion"] as? String ?? "1"
+        return "Version \(short) (\(build))"
+    }
+
     var body: some View {
         ZStack {
             LinearGradient(colors: [ground, groundLow], startPoint: .top, endPoint: .bottom)
@@ -45,9 +52,13 @@ struct SplashView: View {
                     Text("Bikash")
                         .font(.display(24, weight: .medium, relativeTo: .title2))
                         .foregroundStyle(inkSoft)
+                    Text(appVersion)
+                        .font(.caption2)
+                        .foregroundStyle(inkFaint)
+                        .padding(.top, 6)
                 }
                 .opacity(shown ? 1 : 0)
-                .padding(.bottom, 44)
+                .padding(.bottom, 40)
             }
         }
         .environment(\.colorScheme, .dark)
