@@ -1,0 +1,22 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+
+# macOS
+.DS_Store
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Kokoro neural TTS model — 152 MB, re-downloadable from the sherpa-onnx releases
+# (kokoro-int8-en-v0_19). Keep it out of git.
+KokoroModel/
+
+# Bundled mood music — Kevin MacLeod (CC-BY 4.0), transcoded to 48k mono AAC.
+# See scripts/fetch-music.sh to rebuild.
+MoodMusic/
