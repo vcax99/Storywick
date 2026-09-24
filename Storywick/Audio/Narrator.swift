@@ -209,6 +209,13 @@ final class Narrator: NSObject {
         setMood(story.mood)
     }
 
+    /// Push the current reading position into the loaded story's model, so a
+    /// `context.save()` right after captures it (e.g. when the app backgrounds).
+    func persistNow() {
+        guard !sentences.isEmpty else { return }
+        onIndexChange?(currentIndex)
+    }
+
     /// True when narration is loaded and either playing or paused — for a mini bar.
     var isActive: Bool { !sentences.isEmpty && (isSpeaking || isPaused) }
 

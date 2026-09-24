@@ -1,5 +1,6 @@
 import Foundation
 import AVFoundation
+import UIKit
 
 /// Plays a chapter with the Kokoro neural engine. A background loop synthesises
 /// sentences ahead of playback and schedules each PCM buffer on an
@@ -16,8 +17,9 @@ final class KokoroPlayer {
     private let node = AVAudioPlayerNode()
     private let format = AVAudioFormat(standardFormatWithSampleRate: 24_000, channels: 1)!
 
-    private var genQueue = DispatchQueue(label: "kokoro-gen.0", qos: .userInitiated)
+    private var genQueue = DispatchQueue(label: "kokoro-gen.0", qos: .userInteractive)
     private var genSeq = 0
+    private var bgTask: UIBackgroundTaskIdentifier = .invalid
 
     private var sentences: [String] = []
     private var voice = 0
@@ -30,7 +32,10 @@ final class KokoroPlayer {
     private var wantsPlaying = false
 
     /// How many sentences may sit synthesised-and-queued ahead of the one playing.
-    private let maxAhead = 8
+    /// Kept generous so several minutes of audio are already rendered before the
+    /// screen locks — background CPU is throttled too hard to synthesise in real
+    /// time, so playback has to coast on what was buffered up front.
+    private let maxAhead = 50
 
     init() {
         audioEngine.attach(node)
@@ -74,6 +79,7 @@ final class KokoroPlayer {
         startEngineIfNeeded()
         node.play()
         onPreparingChange?(true)
+        beginBackgroundTask()
 
         genQueue.async { [weak self] in self?.generateLoop(gen: gen) }
     }
@@ -81,6 +87,7 @@ final class KokoroPlayer {
     func pause() {
         wantsPlaying = false
         node.pause()
+        endBackgroundTask()
     }
 
     func resume() {
@@ -88,11 +95,29 @@ final class KokoroPlayer {
         AudioHub.shared.activate()
         startEngineIfNeeded()
         node.play()
+        beginBackgroundTask()
     }
 
     func stop() {
         wantsPlaying = false
         hardStop()
+    }
+
+    // MARK: - Background execution
+
+    /// Ask the system to keep the process running a while longer after the screen
+    /// locks, so the generate loop can keep synthesising ahead.
+    private func beginBackgroundTask() {
+        guard bgTask == .invalid else { return }
+        bgTask = UIApplication.shared.beginBackgroundTask(withName: "kokoro-synth") { [weak self] in
+            self?.endBackgroundTask()
+        }
+    }
+
+    private func endBackgroundTask() {
+        guard bgTask != .invalid else { return }
+        UIApplication.shared.endBackgroundTask(bgTask)
+        bgTask = .invalid
     }
 
     /// Re-assert playback after an interruption / foreground, without restarting.
@@ -117,6 +142,7 @@ final class KokoroPlayer {
         node.stop()
         if audioEngine.isRunning { audioEngine.pause() }
         scheduledUpTo = -1
+        endBackgroundTask()
     }
 
     private func clampIndex(_ i: Int) -> Int {

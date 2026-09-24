@@ -20,3 +20,4 @@ KokoroModel/
 # Bundled mood music — Kevin MacLeod (CC-BY 4.0), transcoded to 48k mono AAC.
 # See scripts/fetch-music.sh to rebuild.
 MoodMusic/
+*.xcsettings

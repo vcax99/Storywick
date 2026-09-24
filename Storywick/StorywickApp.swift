@@ -3,6 +3,7 @@ import SwiftData
 
 @main
 struct StorywickApp: App {
+    @Environment(\.scenePhase) private var scenePhase
     @State private var narrator = Narrator()
     private let container: ModelContainer
 
@@ -28,5 +29,13 @@ struct StorywickApp: App {
                 .tint(Theme.accent)
         }
         .modelContainer(container)
+        .onChange(of: scenePhase) { _, phase in
+            // Flush the reading position to disk before the app can be
+            // suspended or killed in the background.
+            if phase != .active {
+                narrator.persistNow()
+                try? container.mainContext.save()
+            }
+        }
     }
 }
