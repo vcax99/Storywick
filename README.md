@@ -10,10 +10,22 @@ A private, fully-offline iOS app that reads your pasted novel chapters aloud in 
 natural neural voice — with cinematic mood music playing softly underneath, and a
 player that behaves like Apple Music.
 
-Personal project. Not on the App Store. Runs on the simulator and on a personal
+Personal project. Not on any app store. Runs on the simulator and on a personal
 iPhone via a free Apple ID.
 
 </div>
+
+---
+
+## Platforms
+
+| Platform | Status | Code |
+| --- | --- | --- |
+| **iOS** | Working — Kokoro neural voice, mood music, background playback, Now-Playing reader | [`iOS/`](iOS/) |
+| **Android** | Planned | `android/` |
+
+Screenshots and the feature description below are for the iOS app; iOS-specific
+build instructions live in [`iOS/CONFIGURATION.md`](iOS/CONFIGURATION.md).
 
 ---
 
@@ -139,23 +151,24 @@ fully functional from the first launch with no connection.
 | **Type** | [Fraunces](https://github.com/undercasetype/Fraunces) display face (SIL OFL), bundled and registered at runtime. |
 | **Identity** | Waveform-into-play mark, lime→green→teal gradient; generated app icon; always-dark branded splash. |
 
-Project layout, folder-by-folder, is in [CONFIGURATION.md](CONFIGURATION.md).
+Project layout, folder-by-folder, is in [iOS/CONFIGURATION.md](iOS/CONFIGURATION.md).
 
 ---
 
 ## Setup & development
 
 New machine, first build, prerequisites, fetching the neural model and the music
-beds → **[CONFIGURATION.md](CONFIGURATION.md)**.
+beds → **[iOS/CONFIGURATION.md](iOS/CONFIGURATION.md)**.
 
 Quick version, once set up:
 
 ```sh
+cd iOS
 xcodebuild -scheme Storywick \
   -destination 'platform=iOS Simulator,name=iPhone 16' build
 ```
 
-or open `Storywick.xcodeproj` in Xcode, pick an iPhone simulator, and press ⌘R.
+or open `iOS/Storywick.xcodeproj` in Xcode, pick an iPhone simulator, and press ⌘R.
 
 ---
 
@@ -169,7 +182,7 @@ or open `Storywick.xcodeproj` in Xcode, pick an iPhone simulator, and press ⌘R
 | Fraunces typeface | SIL Open Font License 1.1 |
 | Sample chapter ("The Lighthouse Keeper") | original, written for this app |
 
-The neural model (`KokoroModel/`) and the music beds (`MoodMusic/`) are **not in
-git** — they're re-downloadable, see CONFIGURATION.md.
+The neural model (`iOS/KokoroModel/`) and the music beds (`iOS/MoodMusic/`) are
+**not in git** — they're re-downloadable, see `iOS/CONFIGURATION.md`.
 
 <div align="center"><sub>Powered By <b>Bikash</b></sub></div>

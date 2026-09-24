@@ -1,7 +1,9 @@
 # Configuration & Setup
 
-Everything needed to build Storywick on a fresh Mac, run it on the simulator, and
-put it on a personal iPhone.
+Everything needed to build the Storywick **iOS** app on a fresh Mac, run it on the
+simulator, and put it on a personal iPhone. (This doc lives in `iOS/` — steps
+below that reference `KokoroModel/`, `Storywick.xcodeproj`, etc. mean the ones
+inside this folder.)
 
 ---
 
@@ -52,7 +54,7 @@ xcodebuild -downloadPlatform iOS
 
 ```sh
 git clone https://github.com/vcax99/Storywick.git
-cd Storywick
+cd Storywick/iOS
 ```
 
 The repo builds and runs on its own with the **System** (Apple) voice and **no
