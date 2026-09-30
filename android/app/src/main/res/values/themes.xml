@@ -1,0 +1,14 @@
+<resources>
+    <!-- The real theme (colors, typography) is all Compose (ui/theme/Theme.kt);
+         these XML themes only set the window background so there's no flash
+         of white before Compose takes over. -->
+    <style name="Theme.Storywick" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/app_ground_dark</item>
+        <item name="android:statusBarColor">@color/app_ground_dark</item>
+        <item name="android:navigationBarColor">@color/app_ground_dark</item>
+    </style>
+
+    <style name="Theme.Storywick.Splash" parent="Theme.Storywick">
+        <item name="android:windowBackground">@color/splash_ground</item>
+    </style>
+</resources>

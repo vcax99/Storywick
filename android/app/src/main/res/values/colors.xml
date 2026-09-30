@@ -1,0 +1,7 @@
+<resources>
+    <!-- Only used by the two XML theme stubs below (window backgrounds); every
+         in-app color comes from ui/theme/Theme.kt so both palettes stay in one
+         place, mirroring how the iOS side keeps colors in Theme.swift. -->
+    <color name="splash_ground">#0A0C0B</color>
+    <color name="app_ground_dark">#0A0C0B</color>
+</resources>
