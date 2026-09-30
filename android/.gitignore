@@ -1,0 +1,16 @@
+# Local machine config — never commit, path is machine-specific.
+local.properties
+
+# Gradle / Android Studio build output.
+build/
+.gradle/
+*.iml
+.idea/
+captures/
+.cxx/
+
+# Large bundled assets — same reasoning as iOS/KokoroModel & iOS/MoodMusic:
+# re-derivable, over typical size limits, kept out of git.
+app/src/main/assets/KokoroModel/
+app/src/main/assets/MoodMusic/
+app/libs/*.aar
